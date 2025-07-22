@@ -11,7 +11,7 @@ Cet écran est la porte d'entrée sécurisée de l'application. Il gère l'accè
 ---
 <img src="./images/welcomeScreen.png">
 
-## Page d'Accueil (Welcome Screen)
+## Page d'Accueil 
 
 Cette page sert d'accueil chaleureux après une connexion réussie.
 
@@ -21,7 +21,7 @@ Cette page sert d'accueil chaleureux après une connexion réussie.
 ---
 <img src="./images/chatbotScreen.png">
 
-## Interface de Chat (Chat Screen)
+## Interface de Chat 
 
 C'est l'écran principal et le cœur fonctionnel de l'application.
 
