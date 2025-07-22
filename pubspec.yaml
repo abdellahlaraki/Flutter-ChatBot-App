@@ -12,6 +12,9 @@ dependencies:
 
   dart_openai: ^5.1.0
   cupertino_icons: ^1.0.8
+  sqflite: ^2.3.3 # Pour la base de données SQLite
+  path: ^1.9.0 # Pour trouver le chemin du dossier de la base de données
+  crypto: ^3.0.3 # Pour le hachage des mots de passe
 
 dev_dependencies:
   flutter_test:

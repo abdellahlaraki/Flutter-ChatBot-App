@@ -1,29 +1,34 @@
-// lib/services/openai_service.dart
 import 'package:dart_openai/dart_openai.dart';
+import '../models/chat_message.dart';
 
 class OpenAiService {
   OpenAiService() {
     OpenAI.apiKey = "OPEN_AI_KEY";
   }
-
-  Future<String> getChatResponse(String prompt) async {
+  
+  Future<String> getChatResponse(List<ChatMessage> messages) async {
     try {
+      final openAiMessages = messages
+          .map((message) => OpenAIChatCompletionChoiceMessageModel(
+                content: [
+                  OpenAIChatCompletionChoiceMessageContentItemModel.text(message.text),
+                ],
+                role: message.isUser
+                    ? OpenAIChatMessageRole.user
+                    : OpenAIChatMessageRole.assistant,
+              ))
+          .toList();
+
       final chatCompletion = await OpenAI.instance.chat.create(
         model: 'gpt-4o-mini',
-        messages: [
-          OpenAIChatCompletionChoiceMessageModel(
-            content: [
-              OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt),
-            ],
-            role: OpenAIChatMessageRole.user,
-          ),
-        ],
+        messages: openAiMessages.reversed.toList(),
       );
+      
       return chatCompletion.choices.first.message.content?.first.text ??
-          "Sorry, I couldn't get a response.";
+          "Désolé, une erreur de réponse est survenue.";
     } catch (e) {
-      print("Error fetching response: $e");
-      return "An error occurred while fetching the response.";
+      print("Erreur API: $e");
+      return "Une erreur est survenue lors de la connexion à l'API.";
     }
   }
 }
