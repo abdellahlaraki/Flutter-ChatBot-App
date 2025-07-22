@@ -3,8 +3,6 @@ import 'package:dart_openai/dart_openai.dart';
 
 class OpenAiService {
   OpenAiService() {
-    // Set your OpenAI API key here.
-    // IMPORTANT: In a real app, use environment variables or a secure secret manager.
     OpenAI.apiKey = "OPEN_AI_KEY";
   }
 

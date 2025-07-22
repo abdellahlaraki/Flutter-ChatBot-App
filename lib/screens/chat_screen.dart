@@ -1,4 +1,3 @@
-// lib/screens/chat_screen.dart
 import 'package:flutter/material.dart';
 import '../models/chat_message.dart';
 import '../services/openai_service.dart';
